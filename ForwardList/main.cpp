@@ -15,12 +15,12 @@ public:
 	Element(int Data, Element* pNext = nullptr) :Data(Data), pNext(pNext)
 	{
 		count++;
-		cout << "EConstructor:\t" << this << endl;
+		cout << "EConstructor:\t\t" << this << endl;
 	}
 	~Element()
 	{
 		count--;
-		cout << "EDestructor:\t" << this << endl;
+		cout << "EDestructor:\t\t" << this << endl;
 	}
 	friend class ForwardList;
 };
@@ -35,12 +35,25 @@ public:
 	{
 		Head = nullptr;
 		size = 0;
-		cout << "LConstructor:\t" << this << endl;
+		cout << "LConstructor:\t\t" << this << endl;
+	}
+	explicit ForwardList(int size):ForwardList()
+	{
+		while (size--)push_front(0);
+		cout << "1argConstructor: \t" << this << endl;
 	}
 	~ForwardList()
 	{
-		cout << "LDestructor:\t" << this << endl;
+		cout << "LDestructor:\t\t" << this << endl;
 	}
+
+	int& operator[](int Index)
+	{
+		Element* Temp = Head;
+		for (int i = 0; i < Index; i++)Temp = Temp->pNext;
+		return Temp->Data;
+	}
+
 	void push_front(int Data)
 	{
 		Element* New = new Element(Data);
@@ -115,11 +128,15 @@ public:
 		cout << "Количество элементов списка:" << size << endl;
 		cout << "Общее количество элементов: " << Element::count << endl;
 	}
+	int get_size()
+	{
+		return size;
+	}
 };
 
 //#define BASE_CHECK
 //#define SIZE_CHECK
-//#define HOME_WORK_1
+#define HOME_WORK_1
 
 void main()
 {
@@ -166,6 +183,7 @@ void main()
 
 #ifdef HOME_WORK_1
 	ForwardList list(5);
+	list.print();
 	for (int i = 0; i < list.get_size(); i++)
 	{
 		list[i] = rand() % 100;
