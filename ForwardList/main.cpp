@@ -37,14 +37,6 @@ public:
 		size = 0;
 		cout << "LConstructor:\t" << this << endl;
 	}
-	//ForwardList(int size)
-	//{
-	//	for (int i = 0; i < size; ++i)
-	//	{
-	//		push_back(0);  // заполним списком нулевыми значениями
-	//	}
-	//	cout << "LSConstructor:\t" << this << endl;
-	//}
 	~ForwardList()
 	{
 		cout << "LDestructor:\t" << this << endl;
@@ -123,12 +115,6 @@ public:
 		cout << "Количество элементов списка:" << size << endl;
 		cout << "Общее количество элементов: " << Element::count << endl;
 	}
-
-	/*int get_size(int size)const
-	{
-		size = this -> size;
-		return size;
-	}*/
 };
 
 //#define BASE_CHECK
