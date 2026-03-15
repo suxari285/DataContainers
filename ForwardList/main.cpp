@@ -20,22 +20,8 @@ template<typename T> class Element
 	Element<T>* pNext;	//указатель на следующий элемент
 	static int count;
 public:
-	Element(T Data, Element<T>* pNext = nullptr) :Data(Data), pNext(pNext)
-	{
-		count++;
-#ifdef DEBUG
-		cout << "EConstructor:\t" << this << endl;
-#endif // DEBUG
-
-	}
-	~Element()
-	{
-		count--;
-#ifdef DEBUG
-		cout << "EDestructor:\t" << this << endl;
-#endif // DEBUG
-
-	}
+	Element(T Data, Element<T>* pNext = nullptr);
+	~Element();
 	friend class ForwardList<T>;
 	friend class Iterator<T>;
 	friend class ConstIterator<T>;
@@ -115,6 +101,23 @@ public:
 
 //////////////////////////////////////////////////////////
 /////////////       Class defenition          ////////////
+
+//------------------------------------------------------//
+//-----------	  Element  methods     -----------------//
+
+template<typename T> Element<T>::Element(T Data, Element<T>* pNext) :Data(Data), pNext(pNext)
+{
+	count++;
+	//cout << "EConstructor:\t" << this << endl;
+}
+template<typename T> Element<T>:: ~Element()
+{
+	count--;
+	//cout << "EDestructor:\t" << this << endl;
+}
+
+//-----------	  Element  methods     -----------------//
+//------------------------------------------------------//
 
 //------------------------------------------------------//
 //-----------	  Iterator  methods    -----------------//
