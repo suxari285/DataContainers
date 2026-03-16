@@ -1,16 +1,11 @@
 #include<iostream>
 #include<string>
 using std::cin;
-using std::cout; 
+using std::cout;
 using std::endl;
 
 #define tab			"\t"
 #define delimiter	"\n----------------------------------------------\n"
-
-//Class - обычный класс;
-//Class<T> - шаблонный класс;
-//Class<int> obj1;		//шаблонные пол€ будут типа 'int';
-//Class<double> obj2;	//шаблонные пол€ будут типа 'double';
 
 template<typename T>
 class List
@@ -35,10 +30,8 @@ class List
 #endif // DEBUG
 		}
 		friend class List;
-	}*Head, * Tail;//Ёкземпл€ры класса можно объ€вл€ть непосредственно после описани€ класса
-	//ќдним выражением можно объ€вить несколько переменных одного типа, один раз указав тип данных,
-	//и перечислив имена объ€вл€емых переменных через зап€тую.
-	size_t size;//size_t - это typedef на 'unsigned int'.
+	}*Head, * Tail
+	size_t size;
 	class ConstBaseIterator
 	{
 	protected:
@@ -179,6 +172,11 @@ public:
 	}
 	List(const std::initializer_list<T>& il) :List()
 	{
+		//initializer_list - это контейнер.
+		// онтейнер - это объект, который организует хранение других объектов в пам€ти.
+		//” любого контейнера есть методы begin() и end();
+		//begin() - возвращает итератор на начало контейнера;
+		//end()   - возвращает итератор на конец контейнера;
 		for (T const* it = il.begin(); it != il.end(); ++it)
 			push_back(*it);
 	}
